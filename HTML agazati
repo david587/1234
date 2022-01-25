@@ -1,0 +1,285 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELső weboldalam</title>
+</head>
+<body>
+    <p>bekezdés</p>
+<br>sortörés--> nem kell bezárni
+<u>underline</u>
+<i>dölt(italic)</i>
+<b> and <strong> félkövér</b></strong>
+<small>kicsi betü</small>
+<s>áthúzott szöveget alkot</s>
+<sup>gyökre teszi</sup>
+<sub>alulra teszi</sub>
+<mark>kiemeli szövegkiemelővel</mark>
+<blockquote>megmutatja hohy az adott szöveg honnan származik</blockquote>
+My favorite color is <del>blue</del><ins>red</ins> 
+<abbr title="hyper language">HTML</abbr>
+<h1>első cimsor</h1> h6 ig van 
+<hr>vizszintes vonal
+--------------------------------------------------------------------------------------------------------------------
+<dl>
+    <dt>kalapács</dt>
+    <dd>a kalapács egy szerszám</dd>
+    <dt>ásó</dt>
+    <dd>az ásóval ásni lehet</dd>
+</dl>
+--------------------------------------------------------------------------------------------------------------------
+<ol>
+    <li>piros</li>
+    <li>sárga</li>   számozott felsorolás
+    <li>kék</li>
+</ol>
+
+<ol type="a">
+    <li>asztal</li>
+    <li>szék</li>       a b c felsorolás
+    <li>tesco</li>
+</ol>
+
+<ul>
+    <li>anya</li>
+    <li>apa</li>     pontos felsorolás
+    <li>teso</li>
+</ul>
+
+<ul type='square' >
+    <li>atom</li>
+    <li>reaktor</li>
+
+</ul>
+--------------------------------------------------------------------------------------------------------------------
+<a href="www.google.com" target="_blank">saját weboldalam</a>---> blank miatt új ablakban nyilik meg az oldal
+<a href="mailto:davidbarath08@gmail.com" target="_blank">enyém a weboldal</a>
+--------------------------------------------------------------------------------------------------------------------
+<figure>
+    <img src="img.jpg" alt="kocsi" width="650" height="350">--> ha nem tölt be a kép akkor azt irja ki hogy kocsi
+    <figcaption>ez egy nissan gtr</figcaption>
+</figure>
+--------------------------------------------------------------------------------------------------------------------
+
+<main>a weboldal fő szövege, csak egy darab lehet,egyedi szövegre használjuk </main>
+
+<nav>navigáció</nav>
+
+<article>blogpostok</article>
+
+<p>budapoesten jártam tegnap</p>
+<aside> Budapest mo fövárosa</aside>ű
+
+<footer>lábléc</footer>
+<header>fejlác</header>
+
+<div>általános jelolő tag</div>
+--------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+<h1>ürlapok</h1>
+<form method="POST">
+<fieldset>
+    <legend>ürlap cime</legend>
+    <ul>  
+        <li>
+            <label for="user">felhasználónév:</label>
+            <input type="text" id="user">
+        </li>
+       <li>
+           <label for="email">email cim:</label>
+           <input type="email" id="email">
+        </li>
+       <li>
+          <label for="kod">password:</label>
+        <input type="password" id="kod">
+        </li>
+        <li> 
+            <label for="phone">telefonszám:</label>
+            <input type="tel" id="phone">
+        </li>
+        <li><input type="file"></li>
+        <li>
+            <label for="date">dátum</label>
+            <input type="checkbox" id="date">
+        </li>
+        <li>
+            <label for="első">első</label><input type="radio" id="első" name="valasz">
+              <label for="masodik">masodik</label><input type="radio"id="masodik" name="valasz">
+              <label for="harmadik">harmadik</label> <input type="radio" id="harmadik" name="valasz">
+            </li>
+        <li> <input type="submit" value="felirat"></li>
+    <li> 
+        <label for="kocsi">válasz kocsi szint</label>
+        <select id="kocsi">
+        <option>piros </option>
+        <option>kék </option>
+        <option>sárga </option>
+    </select>
+    </li>
+    <li>
+        <label for="kocsi">válasz kocsi márkát</label>
+        <select id="kocsi">
+            <optgroup label="olasz autók">
+               <option >fiat</option>
+               <option >alfa rómeó</option>
+            </optgroup>
+            <optgroup label="német autók">
+                <option >audi</option>
+                <option >merci</option>
+             </optgroup>     
+        </select>
+    </li>
+    <li>
+<textarea></textarea>
+    </li>
+    <li>
+        <progress value="80" max="100"></progress>>   
+
+    </li>
+    <li>    
+        <label for="gomb">nyomj rá hogy visszadobjon a tetejére</label>
+        <button type="submit" id="gomb">gombocska</button>
+    </li>
+    
+   </ul>
+</fieldset>
+</form>
+</body>
+</html> 
+
+
+
+Inline elemek:
+.With és height nem müködik
+Át kell teni block ba ha azt akatrjuk hogy müködjön
+Display: block;
+
+Abszolut pozitcio: mi adjuk meg tlejsen hogy hol helyezkedjen el, rámehet szövegre is
+
+Realtiv:nem tolja el a szöveget teljesen lehet mozgatni, nem számmit ha van mellete szoveg , ráteszi
+
+Fix: beállitjuk hol legyen ugynaugy mint a többinél de ha görgetünk lefelé akkor is abban a pozitcioban marad
+
+Float: elhelyezi a szoveget a kép körül
+
+Clear: ne vegye körbe a képet
+
+
+
+margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+
+Igy középre igazitjaű
+
+
+
+border-spacing: 41px;
+
+
+
+
+A h1 500pixel naygságnál legyen kék szinü a háttéer:
+
+@media (min-width: 500px){
+    h1{
+        background-color: blue;
+    }
+}
+Ez legyen a legalján mert ha fül van nem fog müködni
+
+
+Ne menjen tul a kereten a kép:
+Overflow: auto:                    clearfix--> fixálni kell a helyét
+
+
+
+Ne legyen pont felsorolásnál:
+
+ <ul style="list-style-type: none;">
+                <li>Egy</li>
+                <li>Kettő</li>
+                <li>Három</li>
+            </ul>
+
+
+
+background-size: contain;
+Kép ismétlése
+----------------------------------------------
+Ul li menu
+
+nav ul{
+    list-style-type: none;
+    
+}
+nav ul li{
+    display: inline-block;
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    background-color: tomato;
+padding: 3px; /*belso margó
+
+
+nav{
+    position: absolute;
+    top: 5px;
+    margin-left: -40px;
+
+
+----------------------------------------------------------------
+Blokkelemnek margin autoval állitjuk középre
+-----------------------------------------------------------------
+Igy kezdjuk 
+
+*{
+    margin:0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+.bal{
+    display: inline-block; igy mar lehet szélességéet állitani sima inlinével nem
+    width: 200px;
+    background-color: aqua;
+}
+-----------------------------------------------------------------------------------------------------------------
+
+nav ul li:hover{
+    background-color:brown; háéttérszin
+}
+nav ul li:hover a{
+    color: whitesmoke; betüszin
+
+---------------------------------------------------------------------
+Felsorolás között legyen hely
+nav ul li a{
+display: block;
+    width: 100%;
+    margin-top: 10px;    
+}
+
+
+
+
+Font-variant: small-caps kiskapitális
+
+TExt align: justify;  sorkizárt
+Te küldted
+Ha blok elem 
+Margin left:auto
+Margin right:auto.  Középre igazitás
+
+FLoath: right --> 🏛 🏛 🏛<-margin:2px-> 🏛   
+
+KEpek divben:  inline elemek ezert lehet állitani a text-align:center
+
+Div kockák: position absolute
+Top:8px
+Margin left:-210px
