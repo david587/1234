@@ -1,1 +1,388 @@
 
+#250 ig kellenek a formális kiminetek
+#Írjon programot, amely tárolja az e havi bevételt és kiadást (pl: Kiadás: 280315500; Bevétel: 125270000).
+#Írassa ki az egyenleget, 30 szélesen, 3 tizedesjegy pontossággal, „Ft” egységként.
+
+#0203.feladt
+bevétel =125270000
+kiadás = 280315500
+egyenleg = bevétel-kiadás
+
+print("%8s %30.3f " % ("kiadás:",kiadás))
+print("%8s %30.3f " % ("bevétel:",bevétel))
+print("----------------------------------------")
+print("AZ egyenleg: %30.3fFT" % egyenleg)#--->30 szélesen 3tizedesjegy ,float mert pénzösszeg
+
+#print("%s %f" % (alma , 1.8))
+# print("%30.4s %30.4f" % (alma,1.5))  
+
+alma= "alma"
+szam=1.5
+print("%30.4s %30.4f" % (alma,szam))
+
+#lehet %d
+ #     %f
+ #     %c
+ #     %s
+
+#vezető nullákkal
+bevétel =125270000
+kiadás = 280315500
+egyenleg = bevétel-kiadás
+
+print("%8s %030.3f " % ("kiadás:",kiadás))
+print("%8s %030.3f " % ("bevétel:",bevétel))
+print("----------------------------------------")
+print("AZ egyenleg: %030.3fFT" % egyenleg)
+
+bevétel =125270000
+kiadás = 280315500
+egyenleg = bevétel-kiadás
+
+#format függvény
+print("egyenleg{}Ft".format(egyenleg))
+
+#Szélesség (új):
+print("egyenleg: {:10} ft" .format(egyenleg))
+
+
+#kitölti jobbra és balra az ürrs helyet
+print('Valami'.center(20, '='))
+
+#jobbra kitölti
+print('Valami'.ljust(20, '='))
+
+#sep
+print(2,3,4 , sep="-----")
+
+
+
+import random
+
+#random.randrange(["start",] "stop"[, "step"])
+
+print(random.random()) #0 és 1 kzött generál egy számot
+print(random.randrange(6)) # 0tól - 5ig számok
+print(random.randrange(10, 15)) #10-től – 14-ig számok
+
+ 
+for szam in range(20):
+	print(random.randrange(3)) #20darab számot generál 0-tól- 2ig
+print("---------------------------------------------------------------------")
+
+#Randint
+print(random.randint(1,6)) #1töl-6ig dob egy számot
+print("--------------------------------------------------------------------")
+
+#Choice
+seq="abcd"
+print(random.choice(seq))
+#print(random.choice("abcd"))
+from bridgeModel import BridgeModel
+
+class Brig:
+    def read_file(self):
+        fp = open('datas.txt', 'r')
+        lines = fp.readlines()
+        fp.close()
+
+        self.bridges = []
+
+        for line in lines[1::]:
+            (id, name, place, length, year) = line.split(':')
+            bridge = BridgeModel(id, name, place, int(length), int(year))
+            self.bridges.append(bridge)
+
+    # Leghosszabb híd
+    def longest(self):
+        max_bridge = self.bridges[0]
+        for bridge in self.bridges:
+            if bridge.length > max_bridge.length:
+                max_bridge = bridge
+                print(
+                    max_bridge.name,
+
+                )
+    # A Megyeri híd szerepel a listában?
+    def isHaveMegyeri(self):
+        n = len(self.bridges)
+        ker = 'Megyeri híd'
+        i = 0 
+        while i<n and self.bridges [i].name != ker :
+            i += 1
+
+            if i<n:
+                print('van',ker)
+            else:
+                    print('nincs',ker)
+    # A nem budapesti hidak nobp.txt fájlba
+    def select_nobp(self):
+        for bridge in self.bridges:
+            if bridge.place != 'budapest':
+                self.write_bridge(bridge)
+                print('kiírva')
+        
+
+    # Híd kiírása
+    def write_bridge(self, bridge):
+        fp = open('potlas.txt', 'w')
+        fp.write(bridge.id)
+        fp.write(':')
+        fp.write(bridge.name)
+        fp.write(':')
+        fp.write(bridge.place)
+        fp.write('\n')
+        fp.close()
+
+brig = Brig
+brig.read_file()
+brig.longest()
+brig.isHaveMegyeri
+
+
+# def vizsga(elettartam):
+#     if elettartam >=50:
+#         return "állandó"
+#     else:
+#         return "rövid"
+# elet=int(input("hidak életkora"))
+# if elet == 0:
+#     exit()
+# eredmeny=vizsga(elettartam)
+# print(elet)
+
+
+
+
+def check_planet(bolygo_nev):
+    torpek=[ "Ceres", "Pluto", "Haumea", "Makemake", "Eris"]
+    bolygok=["Merkúr", "Vénusz", "Mars", "Jupiter", "Szaturnusz","Uránusz", "Neptunusz"]
+    if bolygo_nev in torpek:
+        return("Törpebolygók")
+    if bolygo_nev in bolygok:
+        return("bolgyó")
+    else:
+        return("Ismeretlen")
+
+
+print(check_planet("Ceres"))
+
+
+bolygo_nev = ""
+while bolygo_nev != "vege" :
+     bolygo_nev=input("Bolygo neve: ")
+     uzenet=check_planet(bolygo_nev)
+     print(uzenet)
+
+from starModel import StarModel
+from typing import List
+class Star:
+    def __init__(self):
+        self.file_name = 'stars.txt'
+        self.lines = []
+        self.stars: List[StarModel] = []
+    
+    def read_content(self):
+        fp = open(self.file_name, 'r', encoding="utf-8")
+        self.lines = fp.readlines()
+        fp.close()
+        
+    
+    def convert_content(self):
+        for line in self.lines[:1]:
+            (name, constellation, 
+            distance, mass, temperature, age) = line.split(':')
+            
+            starModel = StarModel(
+                name, constellation, 
+                float(distance.replace(',','.')), 
+                float(mass.replace(',', '.')), 
+                int(temperature), 
+                float(age.replace(',', '.')))
+
+            self.stars.append(starModel)
+    
+    def print_out(self):
+        for star in self.stars:
+            print(star.name, star.constellation)
+    
+    # Van-e csillag a Göncöl csillagképben
+    def star_in_goncol(self):
+        i=0
+        ker='Göncöl'
+        n=len(self.stars)
+        while i<n and self.stars[i].constellation.find(ker) == -1:
+            print(self.stars[i].constellation)
+            i += 1
+        if i<n:
+            print("Van")
+        else :
+            print("Nincs")
+
+    # Legtávolabbi csillag neve, távolsága
+    def farthest_star(self):
+        max_star=self.stars[0]
+        for star in self.stars:
+            if star.distance>max_star:
+                max_star = star
+        print("A legtávolabbi csillag: ", max_star.name, max_star.distance)
+
+    # Legalacsonyabb hőmérsékletű csillag
+    def lowest_temperature_star(self):
+        min_star=self.stars[0]
+        for star in self.stars:
+            if star.temperature<min_star:
+                min_star=star
+        print("Legalacsonyabb hőmérséklet: ",min_star.name, min_star.temperature)
+
+    # A Csillagok átlagéletkor
+    def average_age_of_stars(self):
+        osszeg=0
+        for star in self.stars:
+            osszeg += star.age
+        darab=len(self.stars)
+        atlag= osszeg/darab
+        print("Átlag életkor: %.2f" % atlag)
+
+    # a Kepler-18 hány kiloggram tömegű
+    def weight_of_kepler18(self):
+        for star in self.stars:
+            if star.name =='Kepler-18':
+                print(star.mass*1,9891*(10**30))
+            
+    # 150 fényévnél közelbbi bolygók neve és távolsága
+    def close_stars(self):
+        pass
+
+    # A Szextánok csillagképben található csillagok adatai
+    def szextan_datas(self):
+        pass
+
+    # A 2 M-nél kisebb tömegű csillagok neve és tömege
+    def less_than_two_mass_stars(self):
+        pass
+
+
+
+star = Star()
+star.read_content()
+star.convert_content()
+star.print_out()
+star.star_in_goncol()
+star.farthest_star()
+star.lowest_temperature_star()
+star.average_age_of_stars()
+star.weight_of_kepler18()
+star.close_stars()
+star.szextan_datas()
+star.less_than_two_mass_stars()
+
+
+
+class StarModel:
+    def __init__(self, name, constellation, 
+            distance, mass, temperature, age):
+        self.name = name
+        self.constellation = constellation
+        self.distance: float = distance
+        self.mass = mass
+        self.temperature= temperature
+        self.age=age
+
+
+from vegetableModel import VegetableModel
+from typing import List
+
+
+class Vegetable:
+    def __init__(self):
+        self.file_name = 'zoldseg.txt'
+        self.vegetables: List[VegetableModel] = []
+        self.lines = []
+    
+    def read_content(self):
+        fp = open(self.file_name, 'r', encoding="utf-8")
+        self.lines = fp.readlines()
+        fp.close()
+    
+    def convert_content(self):
+        for line in self.lines[1:]:
+            (id, name, quantity, price, site) = line.split(';')
+            
+            vegetableModel = VegetableModel(
+                id, name, quantity, price, site
+            )
+            self.vegetables.append(vegetableModel)
+    
+    def print_all(self):
+        for vegetable in self.vegetables:
+            print(
+                vegetable.name,
+                vegetable.site
+                )
+    
+    # A Szolnokon található zöldséget össz tömegét
+    def szeged_sum_wight(self):
+        ossz=0
+        for vegetable in self.vegetables:
+            if vegetable.site == "Szeged":
+                ossz += vegetable.weight
+        print(ossz)
+                
+            
+
+    # Melyik telephelyen van értékben legtöbb zöldség
+    def most_valuable_vegetables1(self):
+
+        arak=[]
+        ossz1=0
+        for vegetable in self.vegetables:
+            if vegetable.site == "Hatvan":
+                ossz1 += vegetable.price
+        print(ossz1)
+        
+        ossz2=0
+        for vegetable in self.vegetables:
+            if vegetable.site == "Szolnok":
+                ossz2 += vegetable.price
+        print(ossz2)
+        
+        
+    
+        ossz3=0
+        for vegetable in self.vegetables:
+            if vegetable.site == "Szeged":
+                ossz3 += vegetable.price
+        print(ossz3)
+        
+        arak.append([ossz1,ossz2,ossz3])
+        
+        maxe= arak[0]
+        for vegetable in arak:
+            if vegetable > maxe:
+                maxe = vegetable
+        
+        maximum=0
+        for i in maxe:
+            if i > maximum:
+                maximum = i
+        print("szegeden van",maximum,"értékben zöldség")
+
+
+vegetable = Vegetable()
+vegetable.read_content()
+vegetable.convert_content()
+vegetable.print_all()
+vegetable.szeged_sum_wight()
+vegetable.most_valuable_vegetables1()
+
+
+class VegetableModel:
+    def __init__(self, id=0, name="ismeretlen", weight=0,site="ismeretlen",price=0):
+        self.id =int(id)
+        self.name = name
+        self.weight=int(weight)
+        self.site = site
+        self.price =int(price)
+
+
