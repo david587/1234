@@ -1,0 +1,212 @@
+En
+Conf t
+ip domain-name suli.lan
+crypto key generate rsa
+Username admin secret titok
+Line vty 0 4
+Login local 
+Transport input ssh
+Exit 
+Do w
+Laptop-->kikpacs kivesz adapter ami lent van beletesszük helyette és visszakapcsoljuk utanna ranyomunk pc wireless és megkeressük a hálozatot
+Te küldted
+Ssh
+Te küldted
+en
+conf t
+vlan 10
+name Marketing
+int range fa0/1-2
+switchport mode access
+switchport access vlan 10
+exit
+vlan 20
+name Raktar
+int range fa0/23-24
+switchport mode access
+switchport access vlan 20
+exit
+vlan 99
+name blackhole
+int range fa0/3-14, fa0/16-22
+switchport mode access
+
+
+switchport access vlan 99
+shutdown
+
+
+int range fa0/15, g0/2
+switchport mode access
+switchport access vlan 99
+exit
+do copy run sta
+
+
+int g0/1
+switchport mode trunk
+exit
+do copy run sta
+
+switch:
+
+int g0/0
+int g0/1
+switchport mode trunk
+exit
+do w
+
+
+router:
+
+en
+conf t
+int g0/0
+no shut
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+no shut
+
+int g0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+no shut
+exit
+do copy run sta
+
+dhcp:
+
+ip dhcp excluded-address 192.168.10.1 192.168.10.50
+ip dhcp pool Marketing
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+exit
+do copy run sta
+
+ip dhcp ex
+ip dhcp excluded-address 192.168.20.1 192.168.20.50
+ip dhcp pool Raktar
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.1
+exit
+do copy run sta
+Te küldted
+vlan 10
+name konyveles
+exit
+int g0/1
+switchport mode access
+switchport access vlan 10
+Switch(config)#int range fa0/1-2 
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#swit
+Switch(config-if-range)#switchport access vlan 10
+
+Switch(config)#vlan 20
+Switch(config-vlan)#name konyha
+Switch(config-vlan)#exit
+
+
+
+
+
+Router:
+Router(config)#int g0/0
+Router(config-if)#ip add
+Router(config-if)#ip address 192.168.10.1 255.255.255.0
+Router(config-if)#no shut
+
+
+Switch(config)#vlan 99
+Switch(config-vlan)#name blackhole
+Switch(config-vlan)#exit
+Switch(config)#int range fa0/3-22
+Switch(config-if-range)#sw
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#sw
+Switch(config-if-range)#switchport acc
+Switch(config-if-range)#switchport access vlan 99
+Switch(config-if-range)#no shut
+Te küldted
+no ip domain lookup
+hostname sw3
+line console 0
+pass titok
+login
+line vty 5 15
+pass titok
+login
+enable secret 
+enable secret titok
+service pass
+service password-encryption 
+ip domain-name suli.net
+crypto key generate rsa
+1024
+username admin secret titok
+line vty 0 4
+login local
+transport input ssh
+exit
+do copy run sta
+
+
+
+Sw : int vlan1 
+Ip address 172.168.10.1
+Mellete a ruter : int g0/1
+Ip address 172.168.10.2
+
+
+
+
+
+
+OSPF route:
+router ospf 1
+network 6.6.6.0 0.0.0.3 area 0
+network 7.7.7.0 0.0.0.3 area 0
+network 172.20.0.0 0.0.255.255 area 0
+pass
+passive-interface g0/0
+exit
+
+Dhcp:
+
+rt2(config)#ip dhcp excluded-address 172.20.0.1 172.20.0.100
+rt2(config)#ip dhcp po
+rt2(config)#ip dhcp pool 
+rt2(config)#ip dhcp pool hr
+rt2(dhcp-config)#net
+rt2(dhcp-config)#network 172.20.0.0
+% Incomplete command.
+rt2(dhcp-config)#network 172.20.0.0 255.255.0.0
+rt2(dhcp-config)#default
+rt2(dhcp-config)#default-router 172.20.0.2 
+rt2(dhcp-config)#service 
+rt2(dhcp-config)#service dhcp
+Te küldted
+Osfp
+Te küldted
+No ip domain lookup
+Conf t
+Hostname rt0
+Banner motd "asa"
+Do w
+Enable secret hello
+Line console 0
+Pass hello
+Login
+Line vty 5 15
+Pass titok
+Login
+Exit
+Service password-encryption
+Ip domain-name gimi.lan
+Crypto key generate rsa
+1024
+Username admin secret adminka
+Line vty 0 4
+Login local
+Transport input ssh
+Exit
