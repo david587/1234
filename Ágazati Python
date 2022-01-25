@@ -386,3 +386,20 @@ class VegetableModel:
         self.price =int(price)
 
 
+
+
+
+#/
+# File: hengfel.py
+# Author: Baráth Dávid
+# Copyright: 2021, Baráth Dávid
+# Group: Szoft 1 N
+# Date: 2021-11-05
+# Github: https://github.com/david587/
+# Licenc: GNU GPL
+#/
+
+print("Baráth Dávid, 2021-11-05, SZOFT 1 N ")
+print("Gyártó: Baráth Dávid")
+print("Feladat 0318")
+print("adatok bekérése,kifejezés kiértékelése a bekért adatokkal")
